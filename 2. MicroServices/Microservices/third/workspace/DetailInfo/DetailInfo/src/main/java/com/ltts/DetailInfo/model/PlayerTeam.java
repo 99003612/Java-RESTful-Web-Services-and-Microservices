@@ -7,8 +7,24 @@ public class PlayerTeam
 	private String pname;
 	
 	private String oname;
+	
+	private String tname;
+	
+	
 
 	
+
+	public String getTname() {
+		return tname;
+	}
+
+
+
+	public void setTname(String tname) {
+		this.tname = tname;
+	}
+
+
 
 	public int getPid() {
 		return pid;
@@ -46,15 +62,16 @@ public class PlayerTeam
 
 
 
-	public PlayerTeam(int pid, String pname, String oname) {
+	public PlayerTeam(int pid, String pname, String oname, String tname) {
 		super();
 		this.pid = pid;
 		this.pname = pname;
 		this.oname = oname;
+		this.tname = tname;
 	}
 
 
-
-
+	
+	
 	
 }

@@ -192,3 +192,15 @@ Binding(CTRL+SHIFT+C,
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-23 14:39:09.904
 !MESSAGE executing callback sts4.classpath.GqacXEmQ SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-23 17:53:20.944
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.GqacXEmQ
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-23 17:53:21.009
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.GqacXEmQ
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-23 17:53:21.009
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2021-03-23 17:53:21.010
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.GqacXEmQ => OK

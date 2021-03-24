@@ -15,11 +15,12 @@ public class PlayerDao
 {
 	List<Player> li = new ArrayList<Player>();
 	
-	li.add(new Player (1,"CSK"));
+	li.add(new Player (1,"Dhoni",1));
 	
-	li.add(new Player (2,"MI"));
+	li.add(new Player (2,"Rohit",2));
 	
-	li.add(new Player (3,"RCB"));
+	li.add(new Player (3,"Virat",3));
+	li.add(new Player (4,"Raina",1));
 	
 	return li;
 	
