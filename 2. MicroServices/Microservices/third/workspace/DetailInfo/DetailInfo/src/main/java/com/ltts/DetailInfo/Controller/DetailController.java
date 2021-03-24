@@ -29,140 +29,126 @@ import com.ltts.DetailInfo.model.PlayerTeam;
 
 @RestController
 public class DetailController {
-	
+
 	private static final RequestMethod[] GET = null;
 	@Autowired
 	RestTemplate rt;
-	
-	
+
 	@RequestMapping("/detailteams")
-	public List<Team> getExternalTeam(){
+	public List<Team> getExternalTeam() {
 		/*
 		 * //List<Team> li=new ArrayList<Team> List<Team>
 		 * li=rt.getForObject("http://localhost:8080/teams", Team.class); return li;
 		 * 
 		 */
-		
+
 		/*
 		 * ResponseEntity<List<Team>> responseEntity =
 		 * rt.exchange("http://localhost:8080/teams", HttpMethod.GET, null, new
 		 * ParameterizedTypeReference<List<Team>>() { }); List<Team> li =
 		 * Arrays.asList(responseEntity.getBody()); return li;
 		 */
-		
-		ResponseEntity<Team[]> response =
-				  rt.getForEntity(
-				  "http://localhost:8084/teams/",
-				  Team[].class);
-		
-	
-				Team[] teams = response.getBody();
-				List<Team> lt=Arrays.asList(teams);
-				
-				//player
-				//plist array
-				
-				//List<Player> plt=Arrays.asList(players);
-				
-				//List<Combined> comlist 
-				//combine
-				//return the combined list
-				return lt;
+
+		ResponseEntity<Team[]> response = rt.getForEntity("http://localhost:8084/teams/", Team[].class);
+
+		Team[] teams = response.getBody();
+		List<Team> lt = Arrays.asList(teams);
+
+		// player
+		// plist array
+
+		// List<Player> plt=Arrays.asList(players);
+
+		// List<Combined> comlist
+		// combine
+		// return the combined list
+		return lt;
 	}
-	
+
 	@RequestMapping("/detailplayers")
-	public List<Player> getExternalPlayer()
-	{
-	
-		ResponseEntity<Player[]> responseplayer =
-				  rt.getForEntity(
-				  "http://localhost:8082/players/",
-				  Player[].class);
-				Player[] players = responseplayer.getBody();
-				List<Player> plt = Arrays.asList(players);
-				
-				//player
-				//plist array
-				
-				//List<Player> plt=Arrays.asList(players);
-				
-				//List<Combined> comlist 
-				//combine
-				//return the combined list
-				return plt;
+	public List<Player> getExternalPlayer() {
+
+		ResponseEntity<Player[]> responseplayer = rt.getForEntity("http://localhost:8082/players/", Player[].class);
+		Player[] players = responseplayer.getBody();
+		List<Player> plt = Arrays.asList(players);
+
+		// player
+		// plist array
+
+		// List<Player> plt=Arrays.asList(players);
+
+		// List<Combined> comlist
+		// combine
+		// return the combined list
+		return plt;
 	}
-	
+
 	@RequestMapping(value = "/detailwithid", method = RequestMethod.GET)
-	public List<PlayerTeam> getEqualId()throws ServletException,IOException
-	
+	public List<PlayerTeam> getEqualId() throws ServletException, IOException
+
 	{
-	
-		//Scanner s = new Scanner(System.in);
-		//System.out.println("TEAM ID:");
-		
-		
-		
+
+		// Scanner s = new Scanner(System.in);
+		// System.out.println("TEAM ID:");
+
 		/*
 		 * int id = s.nextInt();
 		 * 
 		 * int id1 = Integer.parseInt(req.getParameter("id"));
 		 */
-		ResponseEntity<Team[]> responseteam =
-				  rt.getForEntity(
-				  "http://localhost:8084/teams/",
-				  Team[].class);
-		
-		ResponseEntity<Player[]> responseplayer =
-				  rt.getForEntity(
-				  "http://localhost:8082/players/",
-				  Player[].class);
-		
-		ResponseEntity<PlayerTeam[]> responsedetail =
-				  rt.getForEntity(
-				  "http://localhost:8086/detailwithid/",
-				  PlayerTeam[].class);
-		
-		
+		ResponseEntity<Team[]> responseteam = rt.getForEntity("http://localhost:8084/teams/", Team[].class);
+
+		ResponseEntity<Player[]> responseplayer = rt.getForEntity("http://localhost:8082/players/", Player[].class);
+
+		/*
+		 * ResponseEntity<PlayerTeam[]> responsedetail = rt.getForEntity(
+		 * "http://localhost:8086/detailwithid/", PlayerTeam[].class);
+		 * 
+		 * 
+		 */
 		Team[] teams = responseteam.getBody();
-		
+
 		Player[] players = responseplayer.getBody();
-		
-		PlayerTeam[] playerteam = responsedetail.getBody();
-		
-		List<Team> lt=Arrays.asList(teams);
-		
+
+		/*
+		 * PlayerTeam[] playerteam = responsedetail.getBody();
+		 * System.out.println(players);
+		 */
+
+		List<Team> lt = Arrays.asList(teams);
+
 		List<Player> plt = Arrays.asList(players);
 		
-		List<PlayerTeam> pt= Arrays.asList(playerteam);
-		
-		List<PlayerTeam> pt1=new ArrayList<PlayerTeam>();
-		for(Player plr: plt) {
-			String owner = null ;
+		System.out.println(plt);
+		System.out.println(lt);
+
+		/* List<PlayerTeam> pt= Arrays.asList(playerteam); */
+
+		List<PlayerTeam> pt1 = new ArrayList<PlayerTeam>();
+		for (Player plr : plt) {
+			String owner = null;
 			String tname;
-			for(Team tm:lt) {
-				if(plr.getTeamid()==tm.getTeamNo()) {
-					owner=tm.getOwnerName();
-					tname=tm.getTeamName();
+			for (Team tm : lt) {
+				if (plr.getTeamid() == tm.getTeamNo()) {
+					owner = tm.getOwnerName();
+					tname = tm.getTeamName();
 				}
-				
+
 			}
-			pt1.add(new PlayerTeam(plr.getPid(),plr.getPname(),owner));
-			
+			pt1.add(new PlayerTeam(plr.getPid(), plr.getPname(), owner));
+
+			System.out.println(pt1);
 		}
-	/*	for(Team i : teams)
-		{
-			if (i.getTeamNo()==id1)
-			{
-				pt.get(id1);
-				
-				return pt;
-			}
-			
-		}*/
-		
+		/*
+		 * for(Team i : teams) { if (i.getTeamNo()==id1) { pt.get(id1);
+		 * 
+		 * return pt; }
+		 * 
+		 * }
+		 */
+
 		return pt1;
-		
+
 	}
 
 }
-
