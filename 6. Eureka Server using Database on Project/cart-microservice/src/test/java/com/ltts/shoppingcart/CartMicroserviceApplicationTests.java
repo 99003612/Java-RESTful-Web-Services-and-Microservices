@@ -1,4 +1,4 @@
-package com.yugabyte.app.yugastore.cronoscheckoutapi;
+package com.ltts.shoppingcart;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CronosCheckoutApiApplicationTests {
+public class CartMicroserviceApplicationTests {
 
 	@Test
 	public void contextLoads() {
